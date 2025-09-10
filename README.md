@@ -258,4 +258,4 @@ TestApp의 `app.json`에서 API 엔드포인트가 설정되어 있습니다:
 - **물리 디바이스**: `http://[YOUR_IP]:7979/api`
 
 ---
-**연관 프로젝트**: [TestApp Frontend](../KPL_test_app)
+**연관 프로젝트**: [TestApp Frontend](../KLP_test_app)
