@@ -42,9 +42,6 @@ export class BoardsController {
     @UploadedFiles() files: Express.Multer.File[],
     @Req() req: express.Request,
   ) {
-    console.log('dto', dto);
-    console.log('files', files);
-
     const fileUrls = (files ?? []).map((f) => `/uploads/boards/${f.filename}`);
     // req.user는 JwtStrategy.validate에서 return한 객체 형식 사용
     const author = (req as any).user?.id ? { id: (req as any).user.id } : null;
