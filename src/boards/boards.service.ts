@@ -40,6 +40,9 @@ export class BoardsService {
     const board = await this.boards.findOne({
       where: { id },
       relations: { author: true, comments: { author: true } }, // 댓글 + 댓글 작성자
+      // order: {
+      //   comments: { createdAt: 'DESC' }, // 댓글을 createdAt 기준 내림차순 정렬
+      // },
     });
     if (!board) throw new NotFoundException('게시글을 찾을 수 없습니다.');
 
