@@ -8,16 +8,6 @@ import { Comment } from '../comments/comment.entity';
 import { BoardListDto } from './dto/board-list.dto';
 import { BoardDetailDto } from './dto/board-detail.dto';
 
-type AuthorLite = {
-  id: number;
-  userId: string;
-  userName: string;
-} | null;
-
-function toAuthorLite(u: User | null): AuthorLite {
-  return u ? { id: u.id, userId: u.userId, userName: u.name } : null;
-}
-
 @Injectable()
 export class BoardsService {
   constructor(
