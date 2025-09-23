@@ -21,6 +21,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
   // ★ 물리 기기 연결을 위해 0.0.0.0 바인딩
-  await app.listen(process.env.PORT ?? 7979, '0.0.0.0');
+  const port = process.env.PORT ?? 7979;
+  await app.listen(port, '0.0.0.0');
+  console.log(`NestJS 포트폴리오 앱이 포트 ${port}에서 실행 중입니다.`);
 }
 bootstrap();
