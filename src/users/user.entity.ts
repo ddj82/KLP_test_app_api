@@ -1,4 +1,6 @@
 import {
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
@@ -27,20 +29,21 @@ export class User {
   //
   // @UpdateDateColumn({ type: 'datetime', name: 'updated_at' })
   // updatedAt: Date;
-  @CreateDateColumn({
-    type: 'timestamp',
-    precision: 0,
-    default: () => 'CURRENT_TIMESTAMP',
-    name: 'created_at',
-  })
+  @Column({ type: 'datetime', name: 'created_at', nullable: false })
   createdAt: Date;
 
-  @UpdateDateColumn({
-    type: 'timestamp',
-    precision: 0,
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-    name: 'updated_at',
-  })
+  @BeforeInsert()
+  setCreatedAt() {
+    const now = new Date();
+    this.createdAt = now;
+    this.updatedAt = now;
+  }
+
+  @Column({ type: 'datetime', name: 'updated_at', nullable: false })
   updatedAt: Date;
+
+  @BeforeUpdate()
+  setUpdatedAt() {
+    this.updatedAt = new Date();
+  }
 }

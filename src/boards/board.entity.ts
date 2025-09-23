@@ -1,6 +1,6 @@
 import {
+  BeforeInsert,
   Column,
-  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
@@ -30,13 +30,13 @@ export class Board {
 
   // @CreateDateColumn({ type: 'datetime', name: 'created_at' })
   // createdAt: Date;
-  @CreateDateColumn({
-    type: 'timestamp',
-    precision: 0,
-    default: () => 'CURRENT_TIMESTAMP',
-    name: 'created_at',
-  })
+  @Column({ type: 'datetime', name: 'created_at', nullable: false })
   createdAt: Date;
+
+  @BeforeInsert()
+  setCreatedAt() {
+    this.createdAt = new Date();
+  }
 
   @OneToMany(() => Comment, (c) => c.board, { cascade: true })
   comments: Comment[];

@@ -1,4 +1,11 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { User } from '../users/user.entity';
 import { Board } from '../boards/board.entity';
 
@@ -21,11 +28,11 @@ export class Comment {
 
   // @CreateDateColumn({ type: 'datetime', name: 'created_at' })
   // createdAt: Date;
-  @CreateDateColumn({
-    type: 'timestamp',
-    precision: 0,
-    default: () => 'CURRENT_TIMESTAMP',
-    name: 'created_at',
-  })
+  @Column({ type: 'datetime', name: 'created_at', nullable: false })
   createdAt: Date;
+
+  @BeforeInsert()
+  setCreatedAt() {
+    this.createdAt = new Date();
+  }
 }
