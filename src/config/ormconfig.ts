@@ -11,8 +11,8 @@ export const ormconfig = (): TypeOrmModuleOptions => ({
   database: process.env.DB_NAME,
   entities: [User, Board],
   autoLoadEntities: true, // forFeature에 등록한 엔티티 자동 로드
-  // synchronize: true, // 개발용에서만 true (운영은 false)
-  synchronize: process.env.NODE_ENV !== 'production', // 프로덕션에서는 false
+  synchronize: true, // 개발용
+  // synchronize: process.env.NODE_ENV !== 'production', // 프로덕션에서는 false
   // logging: ['error', 'warn', 'schema'], // 테이블 생성 로그 눈으로 확인
   charset: 'utf8mb4',
 });
