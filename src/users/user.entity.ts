@@ -22,9 +22,25 @@ export class User {
   @Column({ length: 50 })
   name: string; // 이름
 
-  @CreateDateColumn({ type: 'datetime', name: 'created_at' })
+  // @CreateDateColumn({ type: 'datetime', name: 'created_at' })
+  // createdAt: Date;
+  //
+  // @UpdateDateColumn({ type: 'datetime', name: 'updated_at' })
+  // updatedAt: Date;
+  @CreateDateColumn({
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    name: 'created_at',
+  })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'datetime', name: 'updated_at' })
+  @UpdateDateColumn({
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+    name: 'updated_at',
+  })
   updatedAt: Date;
 }

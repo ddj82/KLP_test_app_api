@@ -28,7 +28,14 @@ export class Board {
   @Column({ type: 'simple-json', nullable: true, default: null })
   attachments: string[] | null; // 예) ['/uploads/boards/1700000-xxx.png', ...]
 
-  @CreateDateColumn({ type: 'datetime', name: 'created_at' })
+  // @CreateDateColumn({ type: 'datetime', name: 'created_at' })
+  // createdAt: Date;
+  @CreateDateColumn({
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    name: 'created_at',
+  })
   createdAt: Date;
 
   @OneToMany(() => Comment, (c) => c.board, { cascade: true })

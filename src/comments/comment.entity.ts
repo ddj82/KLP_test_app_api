@@ -19,6 +19,13 @@ export class Comment {
   @Column({ type: 'simple-json', nullable: true, default: null })
   attachments: string[] | null;
 
-  @CreateDateColumn({ type: 'datetime', name: 'created_at' })
+  // @CreateDateColumn({ type: 'datetime', name: 'created_at' })
+  // createdAt: Date;
+  @CreateDateColumn({
+    type: 'timestamp',
+    precision: 0,
+    default: () => 'CURRENT_TIMESTAMP',
+    name: 'created_at',
+  })
   createdAt: Date;
 }
