@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { BoardsModule } from './boards/boards.module';
+import { RootModule } from './root/root.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { BoardsModule } from './boards/boards.module';
     UsersModule,
     AuthModule,
     BoardsModule,
+    RootModule,
   ],
 })
 export class AppModule {}

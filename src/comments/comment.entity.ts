@@ -1,11 +1,4 @@
-import {
-  BeforeInsert,
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { BeforeInsert, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from '../users/user.entity';
 import { Board } from '../boards/board.entity';
 
